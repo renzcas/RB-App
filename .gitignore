@@ -1,0 +1,104 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# -------------------------
+# AI / ML / Security
+# -------------------------
+*.pt
+*.pth
+*.h5
+*.onnx
+*.ckpt
+*.pkl
+*.joblib
+*.tflite
+*.bin
+*.model
+
+# Torch / TensorFlow / JAX large libs
+*.dll
+*.so
+*.dylib
+
+# Model directories
+models/
+checkpoints/
+artifacts/
+
+# -------------------------
+# Logs & temp
+# -------------------------
+*.log
+*.tmp
+*.temp
+*.cache
+.cache/
+logs/
+output/
+runs/
+
+# -------------------------
+# Data
+# -------------------------
+data/
+datasets/
+*.csv
+*.tsv
+*.sqlite
+*.db
+
+# -------------------------
+# IDE / Editor
+# -------------------------
+.vscode/
+.idea/
+
+# -------------------------
+# OS files
+# -------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------
+# Docker
+# -------------------------
+docker-data/
+*.pid
+
+# -------------------------
+# RB-App specific
+# -------------------------
+blue_team/__pycache__/
+red_team/__pycache__/
+panels/__pycache__/
+cockpit/__pycache__/
+security/__pycache__/
+grokking/__pycache__/
+
+
+# Python environments
+.venv/
+env/
+rbapp-env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+*.log
+
+# OS junk
+.DS_Store
+Thumbs.db

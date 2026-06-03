@@ -1,0 +1,7 @@
+httpx
+pandas
+scikit-learn
+streamlit
+transformers
+seaborn
+matplotlib

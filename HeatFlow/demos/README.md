@@ -1,0 +1,16 @@
+# Heat Equation Demos
+
+This folder contains self‑contained experiments showing both **classical PDE solvers** and **machine learning surrogates** for the heat equation. Each script can be run standalone with:
+
+```bash
+python demos/<filename>.py
+
+You already have the scaffold for  — that’s the 2D version where the left panel shows classical diffusion and the right panel shows a CNN surrogate. That’s the visual comparison piece.
+
+🎯 How They Fit Together
+• 	 → shows basic tensor ops + autograd (bridge from tensors → ML).
+• 	 → shows 2D PDE vs CNN surrogate (bridge from classical PDE → ML surrogate).
+Together, they give you:
+1. 	The fundamentals (tensor math + gradients).
+2. 	The applied demo (heat equation vs ML).
+'''

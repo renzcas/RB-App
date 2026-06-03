@@ -1,0 +1,105 @@
+///////1 dim heat eqn finite diff eqn example.
+import numpy as np
+import matplotlib.pyplot as plt
+
+nx, nt = 50, 100
+dx, dt = 1.0/nx, 0.001
+alpha = 0.01
+
+u = np.zeros(nx)
+u[nx//2] = 1  # initial heat spike
+
+for t in range(nt):
+    u[1:-1] += alpha * dt/dx**2 * (u[2:] - 2*u[1:-1] + u[:-2])
+
+plt.plot(u)
+plt.show()
+
+////////
+'''
+ Learn PyTorch for ML + PDEs
+• 	Basics: tensors, autograd, neural nets.
+• 	Workflow:
+1. 	Represent PDE solution as a neural net .
+2. 	Compute PDE residual using PyTorch’s autograd.
+3. 	Minimize residual + boundary condition loss.
+
+
+//////////Example skeleton for PINN:
+'''
+import torch
+import torch.nn as nn
+
+class Net(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.layers = nn.Sequential(
+            nn.Linear(2, 64), nn.Tanh(),
+            nn.Linear(64, 64), nn.Tanh(),
+            nn.Linear(64, 1)
+        )
+    def forward(self, x, t):
+        inp = torch.cat([x, t], dim=1)
+        return self.layers(inp)
+
+# PDE residual: du/dt - alpha * d2u/dx2
+def pde_residual(model, x, t, alpha=0.01):
+    u = model(x, t)
+    grads = torch.autograd.grad(u, [x, t], grad_outputs=torch.ones_like(u), create_graph=True)
+    du_dx, du_dt = grads[0], grads[1]
+    d2u_dx2 = torch.autograd.grad(du_dx, x, grad_outputs=torch.ones_like(du_dx), create_graph=True)[0]
+    return du_dt - alpha * d2u_dx2
+    //////////////////
+
+
+''''
+Learning Path
+1. 	Python foundations → NumPy, Matplotlib, SciPy.
+2. 	PyTorch basics → tensors, autograd, training loops.
+3. 	PDE discretization → finite difference, finite element.
+4. 	PINNs & Neural Operators → apply ML to PDEs.
+5. 	Projects:
+• 	Solve 1D/2D heat equation with PINNs.
+• 	Compare numerical vs neural solutions.
+• 	Extend to wave equation or Schrödinger equation (ties into your quantum cockpit goals).
+'''
+'''— let’s start with the absolute basics of PyTorch tensors. Think of them as the building blocks: they’re just like NumPy arrays, but with GPU acceleration and automatic differentiation baked in
+'''
+
+import torch
+
+# 1. Create a simple 1D tensor (vector)
+x = torch.tensor([1, 2, 3, 4])
+print("1D tensor:", x)
+
+# 2. Create a 2D tensor (matrix)
+y = torch.tensor([[1, 2], [3, 4]])
+print("2D tensor:\n", y)
+
+# 3. Create a tensor of zeros
+z = torch.zeros((2, 3))
+print("Zeros tensor:\n", z)
+
+# 4. Create a tensor of random numbers
+r = torch.rand((3, 3))
+print("Random tensor:\n", r)
+
+# 5. Check tensor shape and type
+print("Shape:", r.shape)
+print("Data type:", r.dtype)
+
+# 6. Move tensor to GPU (if available)
+if torch.cuda.is_available():
+    r = r.to("cuda")
+    print("Tensor on GPU:", r)
+
+ Key Notes
+• 	 → manually create from Python lists.
+• 	, ,  → quick initialization.
+• 	 → tells you dimensions.
+• 	 → moves tensor to GPU for acceleration.
+• 	Tensors are the core data structure for training neural networks in PyTorch.
+
+👉 Next step: we can show how to do basic math with tensors (addition, multiplication, matrix product) or even how to track gradients for ML training.
+Would you like me to extend this into a mini demo where a tensor represents a simple function and PyTorch automatically computes its derivative? That’s the bridge from tensors → machine learning.
+
