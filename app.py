@@ -12,6 +12,7 @@ from courses.bug_bounty_bootcamp.engine.engine import BugBountyEngine
 from courses.docker_refresher.engine.engine import DockerRefresherEngine
 from courses.powershell_refresher.engine.engine import PowerShellRefresherEngine
 from courses.kali_refresher.engine.engine import KaliRefresherEngine
+from courses.python_course.engine.engine import PythonCourseEngine
 
 # Progress + activity systems
 from data.progress import load_progress, add_xp, award_badge
@@ -22,6 +23,7 @@ bb_engine = BugBountyEngine()
 docker_engine = DockerRefresherEngine()
 ps_engine = PowerShellRefresherEngine()
 kali_engine = KaliRefresherEngine()
+python_engine = PythonCourseEngine()
 
 print("All course engines loaded.")
 
@@ -117,19 +119,33 @@ with tab4:
     # --- Course Runner ---
     course = st.selectbox(
         "Choose a course:",
-        ["Bug Bounty Bootcamp", "Docker Refresher", "PowerShell Refresher", "Kali Linux Refresher"]
+        [
+            "Bug Bounty Bootcamp",
+            "Docker Refresher",
+            "PowerShell Refresher",
+            "Kali Linux Refresher",
+            "Python Course"
+        ]
     )
 
+    # Engine selection
     if course == "Bug Bounty Bootcamp":
         engine = bb_engine
+        max_modules = 10
     elif course == "Docker Refresher":
         engine = docker_engine
+        max_modules = 10
     elif course == "PowerShell Refresher":
         engine = ps_engine
+        max_modules = 10
     elif course == "Kali Linux Refresher":
         engine = kali_engine
+        max_modules = 10
+    elif course == "Python Course":
+        engine = python_engine
+        max_modules = 20
 
-    module_id = st.number_input("Module ID", min_value=1, max_value=10, step=1)
+    module_id = st.number_input("Module ID", min_value=1, max_value=max_modules, step=1)
 
     if st.button("Run Module"):
         st.write(f"### Running {course} — Module {module_id}")
