@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    background: #02040a;
+    color: #e5e5e5;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: hidden;
+}
+
+#cave-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    pointer-events: auto;
+    opacity: 0.95;
+}
+
+#ui-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    background: radial-gradient(circle at top, #050816 0, #02040a 60%);
+    overflow-y: auto;
+}
+
+.section {
+    border: 1px solid #333;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background: #050b12;
+}
+
+button {
+    background: #111827;
+    color: #e5e5e5;
+    border: 1px solid #374151;
+    padding: 6px 10px;
+    margin: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+button:hover {
+    background: #1f2937;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 6px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    border: 1px solid #374151;
+    background: #020617;
+    color: #e5e5e5;
+    font-size: 12px;
+}
+
+#output {
+    background: #020617;
+    border-radius: 6px;
+    padding: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 11px;
+}
+
+.progress-bar {
+    width: 100%;
+    background: #111827;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 16px;
+    background: #00ff99;
+    border-radius: 6px;
+    width: 0%;
+}
+
+.chart-container {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+canvas {
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 8px;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RB-App Cockpit</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="cave-container"></div>
+
+    <div id="ui-container">
+        <h1>RB-App Cockpit</h1>
+
+        <div class="section">
+            <h2>Controls</h2>
+            <button onclick="runModule(1)">Run Module 1</button>
+            <button onclick="runModule(2)">Run Module 2</button>
+            <button onclick="runModule(3)">Run Module 3</button>
+            <button onclick="runModule(4)">Run Module 4</button>
+            <button onclick="runModule(5)">Run Module 5</button>
+            <br>
+            <button onclick="runLab('lab01_subdomains')">Recon Lab 1</button>
+            <button onclick="runLab('lab02_live_hosts')">Recon Lab 2</button>
+            <button onclick="runLab('lab03_ffuf')">Recon Lab 3</button>
+            <button onclick="runLab('lab04_waybackurls')">Recon Lab 4</button>
+        </div>
+
+        <div class="section">
+            <h2>Writeup Generator</h2>
+            <input id="vulnType" placeholder="Vuln type (e.g. XSS)">
+            <input id="endpoint" placeholder="Endpoint (/path)">
+            <input id="impact" placeholder="Impact (High, Critical...)">
+            <button onclick="generateWriteup()">Generate Writeup</button>
+        </div>
+
+        <div class="section">
+            <h2>My Progress</h2>
+            <button onclick="loadProgress()">Load Progress</button>
+            <div class="progress-bar">
+                <div id="module-progress" class="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>User Dashboard</h2>
+            <button onclick="loadDashboard()">Load Dashboard</button>
+            <div class="chart-container">
+                <canvas id="moduleChart"></canvas>
+                <canvas id="labChart"></canvas>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Output</h2>
+            <pre id="output"></pre>
+        </div>
+    </div>
+
+    <script src="hud.js"></script>
+    <script src="app.js"></script>
+    <script src="cave/cave.js"></script>
+</body>
+</html>
